@@ -1,0 +1,239 @@
+a.Internet is network of networks..It is a gloabal system of interconnected private,public and government computer networks.
+Internet carries vast amount of information and many services.
+
+b.Server uses the HTTP and other protocols to respond to clients request.The web server displays website content by storing processing and delivering webpages to users.
+
+c.
+i.A page where the output of the code is displayed in the browser.
+ii.Is the collection of many webpages linked together.
+iii.Is a link which can open or navigate to another page or open a document,image,video,etc...
+iv.IP address is an unique  address assigned to each device connected to a computer network..
+v.URL is the unique web address for a specific web page in order to locate it.
+
+d.DNS is a database containing domain names which are translated to IP adresses.
+DNS maps the URN users use to locate a website to the IP address that a computer uses to locate a website.
+
+e.
+i.Add dynamic and interactive elements for a webpage to interact with user.
+ii.PHP is used to create dynamic websites.
+
+f.
+World Wide Web(WWW)-Mode to access various forms of information available on the servers over the internet
+Email-Send elecctronic mails betwwen people over internet.
+videoConferemcing-Communicatiing with video and audio using telecommunicationtechnology
+FTP-Transfer(upload and downloiad) files over Internet.
+
+2.
+i.Web browser is a Software used to interact with the information in WWW.
+ii.Web Server is used to display web content requested by the client.
+
+
+3.
+a.It is a markup language used to create a webpage using many elements.
+HTML mainly focuses on the anatomy/structure of the webpage.It includes the head and body of a webpage.
+b.
+i.It defines the document type and version of HTML.
+ii.It defines the start and end of a HTML document.
+iii.It defines the document header which includes title,link and inline style sheets.
+iv.It defines the document body which includes the content body of the webpage.
+
+c.Empty element has only starting tag as it does not have any content.
+Example:-<img>,<input>,<meta>,</br>,</hr>
+
+d.<meta name="viewport" content="width=device-width,initial-scale-1.0"/>-Sets the width of the page to follow screen-width of the device sets initial zoom state to 1.0.
+<meta name="keywords" content="Youtube"/>-Sets keywords for search engines to locate page.
+<meta name="authour" content="Akmal"/>-define authour of a webpage.
+<meta name="description" content="YoutubeOfficial"/>-defines a description for webpage.
+<meta http-equiv="refresh" content="30"/>Refresh page every 30 sec
+<meta charset="UTF-8"/>-Defines character encoding of document.
+
+e.
+i.
+<html>
+<head>
+	<title>Lists</title>
+</head>
+<body>
+	
+	<ol>
+		<li>Fruits
+			<ol type="a">
+			<li>Mango</li>
+			<li>Apple</li>
+			<li>Banana</li>
+			<li>Orange</li>
+			<li>Pineapple</li>
+			</ol>
+		</li>
+	</ol>
+
+	<ul>
+	<li>Pets
+		<ul type="circle">
+		<li>Dog</li>
+		<li>Cat</li>
+		<li>Parrot</li>
+		<li>Fish</li>
+		<li>Pigeon</li>
+		</ul>
+	</li>
+	</ul>
+</body>
+</html>
+
+ii.<h1>Heading Level 1</h1></hr width="100%">
+<p>Heading Level 1 is the largest size of heading tags available in HTML</p>
+
+4.a.Attributes are used to decsribe  an element.
+Attribute has two components as name and value.
+Name is the property to set/describe and value is the value of that property.
+Example:-<body bgcolor="red">
+Here the background color of the body is set to red.
+bgcolor is name while red is the value.
+
+b.
+i.Id attribute
+ii.Title attribute.
+iii.Class attribute.
+iv.Style attribute.
+
+c.
+i.background-color/bgcolor
+ii.<bdo></bdo>
+ii.<tt></tt>
+iv.<del></del><ins></ins>
+
+d.<!DOCTYPE html>
+<head>
+	<title>FORMS</title>
+</head>
+
+<body>
+
+	<form>
+		<fieldset>
+			<legend>Details of 1st Level of Student</legend>
+
+			<table>
+				<tr>
+				<td>Title</td>
+				<td><input type="text" name="title"></td>
+				</tr>
+
+				<tr>
+					<td>Full name</td>
+					<td><input type="text" name="fullname" size="30" maxlength="25"></td>
+				</tr>
+
+				<tr>
+					<td>Registration Number</td>
+					<td><input type="number" size="10" maxlength="5"></td>
+				</tr>
+
+				<tr>
+					<td>Address</td>
+					<td><input type="text" size="50" name="add" maxlength="100"></td>
+				</tr>
+
+				<tr>
+					<td>Level</td>
+					<td><input type="text" name="level" value="Level 1" readonly></td>
+				</tr>
+
+				<tr>
+					<td><select name="sub" size="4" multiple>
+							<option>IT1134</option>
+							<option>IT1144</option>
+							<option>IT1113</option>
+							<option>IT1122</option>
+							<option>IT1152</option>
+						</select>
+					</td>
+				</tr>
+			</table>
+			<input type="submit"> <input type="reset">
+		</fieldset>
+	</form>
+</body>
+
+
+
+</html>
+
+5.
+a.CSS is used to decorate and design the contents of a webpage.
+It  can be used to decorate and design  a position,page or multipages based on the user requirements.
+
+ 
+b.
+It has less coding and saves time 
+Designing based on the user requirement(position of a webpage,webpage,multiple webpages).
+Easy updating and modification of codes.
+Vast amount of attributes can be used to create a better webpage.
+
+c.
+i.Type selector
+body{
+	font-size:10px;
+	
+}
+The element body is styled with 10 px font size
+
+ii.Universal Selector
+*{
+	text-align:center;
+}
+All the elements are aligned with center aligned.
+
+iii.Descendent Selector
+p h1{
+	color:Dodgerblue;
+}
+All h1 elements in p(descendent) are styled with dodgerblue font color.
+
+iv.Child Selector
+
+p>h1{
+	color:Dodgerblue;
+}
+
+All immediate h1 elements in p(child) are styled eith dodgerblue fontcolor.
+
+v.Atrribute Selector
+
+p[class="chapter"]{
+	font-size:20px; 
+}
+All elements with the class chapter is styled with.
+
+d.
+i.Embedded CSS is used to add styles to a single webpage by using <style></style> tags inside <head> tag.Here property and value is are included as follows.
+ selector{
+	property:value;
+}
+ii.Inline CSS is used to add styles to a specific element in a webpage using <style> tag.Here property and value is included as follows.
+<style="property:value;property:value"
+
+iii.External CSS is used to link a css file to a html document.Here the syntax of styling is similar in embedded style sheets and a <link> tag is used to link the css file.
+<link rel="stylesheet" href="abc.css">
+
+iv.Imported CSS is used to link an external sheet using its URL.
+@import "URL";/@import url("URL"); 
+e.
+i.p{
+	color:red;
+}
+ii.p,h1{
+	color;blue;	
+}
+
+iii.@import "style.css"
+iv.<body style="background-color:linen">
+v.<p style="border:4px dotted">
+vi.body h1{
+	font-family:"Verdana";
+}
+body{
+	font-family:"Courier New";
+}
+

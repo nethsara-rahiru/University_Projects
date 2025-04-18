@@ -1,0 +1,90 @@
+<DOCTYPE HTML>
+<html>
+	<head>
+		<style>
+			input{
+				margin:2px;
+			}
+		</style>
+	</head>
+	<body>
+		<form>
+			<fieldset>
+			<legend>Your details</legend>
+			<ol>
+				<li>
+					<label>Name</label>
+					<input type="text" placeholder="First and last name">
+				</li>
+				<li>
+					<label>Email</label>
+					<input type="text" placeholder="example@domain.com">
+				</li>
+				<li>
+					<label>Phone</label>
+					<input type="text" placeholder="+4475000000000">
+				</li>
+			</ol>
+			
+			</fieldset>
+			
+			<fieldset>
+				<legend>Delivery address</legend>
+				<ol>
+					<li>
+						<label>Address</label>
+						<textarea rows="5" cols="25"></textarea>
+					</li>
+					<li>
+						<label>Post code</label>
+						<input type="text">
+					</li>
+					<li>
+						<label>Country</label>
+						<input type="text">
+					</li>
+				</ol>
+			</fieldset>
+			
+			<fieldset>
+				<legend>Card details</legend>
+				<ol>
+					<li>
+					<fieldset>
+						<legend>Card type</legend>
+						<ol>
+							<li>
+								<input type="radio" name="a">
+								<lable>VISA</lable>
+							</li>
+							<li>
+								<input type="radio" name="a">
+								<lable>AmEx</lable>
+							</li>
+							<li>
+								<input type="radio" name="a">
+								<lable>Mastercade</lable>
+							</li>
+						</ol>
+					</fieldset>
+				</li>
+				<li>
+					<label>Card number</label>
+					<input type="text">
+				</li>
+				<li>
+					<label>Security code</label>
+					<input type="text">
+				</li>
+				<li>
+					<label>Name on card</label>
+					<input type="text" placeholder="Exact name as on the card">
+				</li>
+			</fieldset>
+			
+			<fieldset>
+				<input type="submit" value="Buy it!" style="border-radius: 50px; border-width:1px;">
+			</fieldset>
+		</form>
+	</body>
+</html>

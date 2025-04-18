@@ -1,0 +1,121 @@
+<DOCTYPE HTML>
+<html>
+	<head>
+		<style>
+			form{
+				border-width : 3px;
+				border-color : blue;
+				border-style : solid;
+				font-family:  sans-serif;
+				padding : 20px;
+				width : 500px;
+			}
+			h1{
+				color : blue;
+				font-weight : bold;
+			}
+			label{
+				color : blue;
+				font-weight : bold;
+			}
+			btn{
+				border-block-style: none;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<form>
+			<h2>Please Complete our survey</h2>
+			
+			<h3>Contact information</h3>
+			<table>
+				<tr>
+					<td width="150px">
+						<label>Email address: <label>
+					</td>
+					<td>
+						<input type="text">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>First name: <label>
+					</td>
+					<td>
+						<input type="text">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>Last name: <label>
+					</td>
+					<td>
+						<input type="text">
+					</td>
+				</tr>
+			</table>
+			
+			<h3>Geographic information</h3>
+			<table>
+				<tr>
+					<td width="150px">
+						<label>State: <label>
+					</td>
+					<td>
+						<input type="text" placeholder="Two characters" maxlength="2">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>Zip code: <label>
+					</td>
+					<td>
+						<input type="text" placeholder="Five digits" maxlength="5">
+					</td>
+				</tr>
+			</table>
+			
+			<h3>How did you hear about us?</h3>
+			<table>
+				<tr>
+					<td width="150px">
+						<label>Web Search: <label>
+					</td>
+					<td>
+						<input type="checkbox">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>Facebook: <label>
+					</td>
+					<td>
+						<input type="checkbox">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>Twitter: <label>
+					</td>
+					<td>
+						<input type="checkbox">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>Email message: <label>
+					</td>
+					<td>
+						<input type="checkbox">
+					</td>
+				</tr>
+			</table>
+			<h3>Thank you for taking our survey!</h3>
+			<center>
+				<input type="submit" class="btn">
+				<input type="reset" class="btn">
+			</center>
+		</form>
+	</body>
+</html>

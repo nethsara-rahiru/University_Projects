@@ -1,0 +1,38 @@
+/* styles.css */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  width: 90%;
+  max-width: 1200px;
+}
+
+.box {
+  flex: 1;
+  padding: 20px;
+  color: white;
+}
+
+.left {
+  background-color: blue;
+}
+
+.middle {
+  background-color: green;
+}
+
+.right {
+  background-color: black;
+}
+
+h3 {
+  margin-top: 0;
+}
