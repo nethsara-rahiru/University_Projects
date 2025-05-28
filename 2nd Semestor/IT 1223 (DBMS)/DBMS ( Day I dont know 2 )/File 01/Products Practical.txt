@@ -1,0 +1,94 @@
+Question 01
+
+	 create table PRODUCTS(Product_ID INT, Product_name VARCHAR(50), Product_cost DOUBLE);
+	 
+		Query OK, 0 rows affected (0.011 sec)
+		
+Question 02
+
+	desc products;
+	
+		+--------------+-------------+------+-----+---------+-------+
+		| Field        | Type        | Null | Key | Default | Extra |
+		+--------------+-------------+------+-----+---------+-------+
+		| Product_ID   | int(11)     | YES  |     | NULL    |       |
+		| Product_name | varchar(50) | YES  |     | NULL    |       |
+		| Product_cost | double      | YES  |     | NULL    |       |
+		+--------------+-------------+------+-----+---------+-------+
+		3 rows in set (0.017 sec)
+		
+Question 03
+
+	 load data local infile 'C:/Users/2022ict62/Desktop/DBMS ( Day I dont know )/File 01/products.txt' into table products;
+	 
+		Query OK, 8 rows affected, 8 warnings (0.006 sec)
+		Records: 8  Deleted: 0  Skipped: 0  Warnings: 8
+		
+Question 04
+
+	select * from products;
+	
+		+------------+----------------------+--------------+
+		| Product_ID | Product_name         | Product_cost |
+		+------------+----------------------+--------------+
+		|       1001 | Colgate_toothpaste   |         2.25 |
+		|       1002 | T-Shirt              |            5 |
+		|       1003 | Jeans                |          6.5 |
+		|       1004 | Shorts               |          4.5 |
+		|       1005 | Sneakers             |         8.99 |
+		|       1007 | Mouthwash            |         3.35 |
+		|       1008 | Denim Jeans          |         8.99 |
+		|       1009 | Synsodyne Toothpaste |         NULL |
+		+------------+----------------------+--------------+
+		8 rows in set (0.001 sec)
+		
+Question 05
+
+	select * from products group by product_name having sum(product_cost)>3.5 order by product_cost;
+	
+		+------------+--------------+--------------+
+		| Product_ID | Product_name | Product_cost |
+		+------------+--------------+--------------+
+		|       1004 | Shorts       |          4.5 |
+		|       1002 | T-Shirt      |            5 |
+		|       1003 | Jeans        |          6.5 |
+		|       1008 | Denim Jeans  |         8.99 |
+		|       1005 | Sneakers     |         8.99 |
+		+------------+--------------+--------------+
+		5 rows in set (0.001 sec)
+		
+Question 06
+
+	select * from products group by product_name having max(product_cost)>7 order by product_cost;
+	
+		+------------+--------------+--------------+
+		| Product_ID | Product_name | Product_cost |
+		+------------+--------------+--------------+
+		|       1005 | Sneakers     |         8.99 |
+		|       1008 | Denim Jeans  |         8.99 |
+		+------------+--------------+--------------+
+		2 rows in set (0.001 sec)
+		
+Question 07
+
+	select * from products group by product_name having min(product_cost)<3 order by product_cost;
+	
+		+------------+--------------------+--------------+
+		| Product_ID | Product_name       | Product_cost |
+		+------------+--------------------+--------------+
+		|       1001 | Colgate_toothpaste |         2.25 |
+		+------------+--------------------+--------------+
+		1 row in set (0.001 sec)
+
+Question 08
+
+	select * from products group by product_name having avg(product_cost)>(select avg(product_cost) from products) order by product_cost;
+	
+		+------------+--------------+--------------+
+		| Product_ID | Product_name | Product_cost |
+		+------------+--------------+--------------+
+		|       1003 | Jeans        |          6.5 |
+		|       1005 | Sneakers     |         8.99 |
+		|       1008 | Denim Jeans  |         8.99 |
+		+------------+--------------+--------------+
+		3 rows in set (0.001 sec)

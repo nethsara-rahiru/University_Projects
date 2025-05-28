@@ -1,0 +1,96 @@
+Create the Databace ->
+
+	MariaDB [it1223]> CREATE DATABASE libraryDB;
+	Query OK, 1 row affected (0.002 sec)
+
+Create the table (Books) ->
+
+	MariaDB [it1223]> CREATE TABLE Books (BookID INT, Title VARCHAR(100), AuthorID VARCHAR(10), Edition VARCHAR (100));
+	Query OK, 0 rows affected (0.011 sec)
+
+Create the table (Authors) ->
+
+	MariaDB [it1223]> ALTER TABLE Books ADD FOREIGN KEY (AuthorID) REFERENCES Authors(AuthorID);
+	Query OK, 0 rows affected (0.040 sec)
+	Records: 0  Duplicates: 0  Warnings: 0
+
+ADDING PRIMARY KEYS (Books) ->
+
+	MariaDB [it1223]> ALTER TABLE Books ADD PRIMARY KEY (BookID, Edition);
+	Query OK, 0 rows affected (0.035 sec)
+	Records: 0  Duplicates: 0  Warnings: 0
+
+View Tables ->
+
+	MariaDB [it1223]> desc books; desc authors;
+	+----------+--------------+------+-----+---------+-------+
+	| Field    | Type         | Null | Key | Default | Extra |
+	+----------+--------------+------+-----+---------+-------+
+	| BookID   | int(11)      | NO   | PRI | NULL    |       |
+	| Title    | varchar(100) | YES  |     | NULL    |       |
+	| AuthorID | varchar(10)  | YES  | MUL | NULL    |       |
+	| Edition  | varchar(100) | NO   | PRI | NULL    |       |
+	+----------+--------------+------+-----+---------+-------+
+	4 rows in set (0.013 sec)
+
+	+------------+--------------+------+-----+---------+-------+
+	| Field      | Type         | Null | Key | Default | Extra |
+	+------------+--------------+------+-----+---------+-------+
+	| AuthorID   | varchar(10)  | NO   | PRI | NULL    |       |
+	| AuthorName | varchar(100) | YES  |     | NULL    |       |
+	+------------+--------------+------+-----+---------+-------+
+	2 rows in set (0.003 sec)
+
+Insert Data (Authors) ->
+
+	MariaDB [it1223]> INSERT INTO Authors(AuthorID, AuthorName) VALUES
+		-> ("1","J.K.Rowling"),
+		-> ("2","George Orwell"),
+		-> ("3","J.R.R.Tolkien"),
+		-> ("4","Agatha Christie"),
+		-> ("5","Jane Austen");
+	Query OK, 5 rows affected (0.005 sec)
+	Records: 5  Duplicates: 0  Warnings: 0
+
+Insert Data (Books) ->
+
+	MariaDB [it1223]> INSERT INTO Books VALUES
+		-> (1,"Harry Potter","1","1"),
+		-> (2,"Animal Farm","2","1"),
+		-> (3,"1984","2","1"),
+		-> (4,"The Rabbit","3","1"),
+		-> (5,"Pride and Preju","5","1");
+	Query OK, 5 rows affected (0.005 sec)
+	Records: 5  Duplicates: 0  Warnings: 0
+
+MariaDB [it1223]> SELECT * FROM Books;
++--------+-----------------+----------+---------+
+| BookID | Title           | AuthorID | Edition |
++--------+-----------------+----------+---------+
+|      1 | Harry Potter    | 1        | 1       |
+|      2 | Animal Farm     | 2        | 1       |
+|      3 | 1984            | 2        | 1       |
+|      4 | The Rabbit      | 3        | 1       |
+|      5 | Pride and Preju | 5        | 1       |
++--------+-----------------+----------+---------+
+5 rows in set (0.000 sec)
+
+
+
+
+MariaDB [it1223]> SELECT * FROM Books WHERE AuthorID = (SELECT AuthorID FROM Books WHERE AuthorName = "George Orwell");
++--------+-------------+----------+---------+
+| BookID | Title       | AuthorID | Edition |
++--------+-------------+----------+---------+
+|      2 | Animal Farm | 2        | 1       |
+|      3 | 1984        | 2        | 1       |
++--------+-------------+----------+---------+
+2 rows in set (0.001 sec)
+
+
+
+
+
+
+
+INSERT INTO Books VALUES(1,"Harry Potter", (SELECT AuthorID FROM Authors WHERE AuthorName = "Jane Austen") ,"1");

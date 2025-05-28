@@ -1,0 +1,8 @@
+1001	Colgate_toothpaste	2.25
+1002	T-Shirt	5
+1003	Jeans	6.5
+1004	Shorts	4.5
+1005	Sneakers	8.99
+1007	Mouthwash	3.35
+1008	Denim Jeans	8.99
+1009	Synsodyne Toothpaste

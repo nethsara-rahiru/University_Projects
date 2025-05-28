@@ -1,0 +1,393 @@
+//CREATE TABLE
+
+MariaDB [salesdb]> create table Sales(
+    -> Location VARCHAR(50),
+    -> Product VARCHAR(50),
+    -> Price DOUBLE,
+    -> Sold_at TIMESTAMP
+    -> );
+Query OK, 0 rows affected (0.010 sec)
+
+
+//VIEW TABLE
+
+MariaDB [salesdb]> desc sales
+    -> ;
++----------+-------------+------+-----+---------------------+-------------------------------+
+| Field    | Type        | Null | Key | Default             | Extra                         |
++----------+-------------+------+-----+---------------------+-------------------------------+
+| Location | varchar(50) | YES  |     | NULL                |                               |
+| Product  | varchar(50) | YES  |     | NULL                |                               |
+| Price    | double      | YES  |     | NULL                |                               |
+| Sold_at  | timestamp   | NO   |     | current_timestamp() | on update current_timestamp() |
++----------+-------------+------+-----+---------------------+-------------------------------+
+4 rows in set (0.016 sec)
+
+
+//INSERT DATA INTO TABLE
+
+MariaDB [salesdb]> INSERT INTO sales (Location, Product, Price, Sold_at) VALUES
+    -> ('HQ','Coffee',2,NOW()),
+    -> ('HQ','Coffee',2.5,NOW() - INTERVAL 1 HOUR),
+    -> ('Downtown','Bagel',3.5,NOW() - INTERVAL 2 HOUR),
+    -> ('Downtown','Coffee',2,NOW() - INTERVAL 1 DAY),
+    -> ('HQ','Bagel',1.5,NOW() - INTERVAL 2 DAY),
+    -> ('1st Street','Bagel',3.5,NOW() - INTERVAL 2 DAY - INTERVAL 1 HOUR),
+    -> ('1st Street','Coffee',5,NOW() - INTERVAL 3 DAY),
+    -> ('HQ','Bagel',3,NOW() - INTERVAL 3 DAY - INTERVAL 1 HOUR);
+Query OK, 8 rows affected (0.005 sec)
+Records: 8  Duplicates: 0  Warnings: 0
+
+
+
+
+//SHOW TABLE
+
+MariaDB [salesdb]> SELECT * FROM sales;
++------------+---------+-------+---------------------+
+| Location   | Product | Price | Sold_at             |
++------------+---------+-------+---------------------+
+| HQ         | Coffee  |     2 | 2025-04-09 11:03:26 |
+| HQ         | Coffee  |   2.5 | 2025-04-09 10:03:26 |
+| Downtown   | Bagel   |   3.5 | 2025-04-09 09:03:26 |
+| Downtown   | Coffee  |     2 | 2025-04-08 11:03:26 |
+| HQ         | Bagel   |   1.5 | 2025-04-07 11:03:26 |
+| 1st Street | Bagel   |   3.5 | 2025-04-07 10:03:26 |
+| 1st Street | Coffee  |     5 | 2025-04-06 11:03:26 |
+| HQ         | Bagel   |     3 | 2025-04-06 10:03:26 |
++------------+---------+-------+---------------------+
+8 rows in set (0.000 sec)
+
+
+
+
+
+
+//SET LIMIT
+
+MariaDB [salesdb]> SELECT * FROM sales LIMIT 2;
++----------+---------+-------+---------------------+
+| Location | Product | Price | Sold_at             |
++----------+---------+-------+---------------------+
+| HQ       | Coffee  |     2 | 2025-04-09 11:03:26 |
+| HQ       | Coffee  |   2.5 | 2025-04-09 10:03:26 |
++----------+---------+-------+---------------------+
+2 rows in set (0.001 sec)
+
+
+
+
+
+//Use OFFSET
+
+MariaDB [salesdb]> SELECT * FROM sales LIMIT 3 OFFSET 4;
++------------+---------+-------+---------------------+
+| Location   | Product | Price | Sold_at             |
++------------+---------+-------+---------------------+
+| HQ         | Bagel   |   1.5 | 2025-04-07 11:03:26 |
+| 1st Street | Bagel   |   3.5 | 2025-04-07 10:03:26 |
+| 1st Street | Coffee  |     5 | 2025-04-06 11:03:26 |
++------------+---------+-------+---------------------+
+3 rows in set (0.000 sec)
+
+
+
+
+
+
+//FIND MIN PRICE
+
+MariaDB [salesdb]> SELECT MIN(price) FROM sales;
++------------+
+| MIN(price) |
++------------+
+|        1.5 |
++------------+
+1 row in set (0.000 sec)
+
+
+
+
+
+//FIND MAX PRICE
+
+MariaDB [salesdb]> SELECT MAX(price) FROM sales;
++------------+
+| MAX(price) |
++------------+
+|          5 |
++------------+
+1 row in set (0.000 sec)
+
+
+
+
+
+
+//FIND MIN PRICE WITH PRODUCT
+
+MariaDB [salesdb]> SELECT product, MIN(price) FROM sales HAVING MIN(price);
++---------+------------+
+| product | MIN(price) |
++---------+------------+
+| Coffee  |        1.5 |
++---------+------------+
+1 row in set (0.000 sec)
+
+
+
+
+
+
+//CHANGING COLOUM NAME
+
+MariaDB [salesdb]> SELECT product, MIN(price) AS minimum FROM sales HAVING MIN(price);
++---------+---------+
+| product | minimum |
++---------+---------+
+| Coffee  |     1.5 |
++---------+---------+
+1 row in set (0.001 sec)
+
+
+
+
+
+
+
+
+
+
+//RETURN ALL LOCATIONS
+
+MariaDB [salesdb]> SELECT location FROM sales;
++------------+
+| location   |
++------------+
+| HQ         |
+| HQ         |
+| Downtown   |
+| Downtown   |
+| HQ         |
+| 1st Street |
+| 1st Street |
+| HQ         |
++------------+
+8 rows in set (0.001 sec)
+
+
+
+
+
+
+
+
+
+// RETURN UNIQE LOCATIONS
+
+MariaDB [salesdb]> SELECT DISTINCT(location) FROM sales;
++------------+
+| location   |
++------------+
+| HQ         |
+| Downtown   |
+| 1st Street |
++------------+
+3 rows in set (0.001 sec)
+
+
+
+
+
+
+
+
+// RETURN LOCATIONS BY GROUP
+
+MariaDB [salesdb]> SELECT location FROM sales GROUP BY location;
++------------+
+| location   |
++------------+
+| 1st Street |
+| Downtown   |
+| HQ         |
++------------+
+3 rows in set (0.001 sec)
+
+
+
+
+
+
+
+
+
+
+
+// SELECT PRODUCT BY LOCATION GORUP
+
+MariaDB [salesdb]> SELECT location, product FROM sales GROUP BY location;
++------------+---------+
+| location   | product |
++------------+---------+
+| 1st Street | Bagel   |
+| Downtown   | Bagel   |
+| HQ         | Coffee  |
++------------+---------+
+3 rows in set (0.000 sec)
+
+
+
+
+
+
+
+
+
+
+
+
+// RETURN LOCATION & NUMBER OF Sales
+
+MariaDB [salesdb]> SELECT location,COUNT(location) AS number_of_sales FROM sales GROUP BY location;
++------------+-----------------+
+| location   | number_of_sales |
++------------+-----------------+
+| 1st Street |               2 |
+| Downtown   |               2 |
+| HQ         |               4 |
++------------+-----------------+
+3 rows in set (0.001 sec)
+
+
+
+
+
+
+
+
+
+
+
+// RETURN PRODUCTS & NUMBER OF SALES
+
+MariaDB [salesdb]> SELECT product, COUNT(product) FROM sales GROUP BY product;
++---------+----------------+
+| product | COUNT(product) |
++---------+----------------+
+| Bagel   |              4 |
+| Coffee  |              4 |
++---------+----------------+
+2 rows in set (0.001 sec)
+
+
+
+
+
+
+
+
+
+// RETURN THE TOTAL CASH BACK FROM EACH PRODUCT
+
+MariaDB [salesdb]> SELECT product, SUM(price) FROM sales GROUP BY product;
++---------+------------+
+| product | SUM(price) |
++---------+------------+
+| Bagel   |       11.5 |
+| Coffee  |       11.5 |
++---------+------------+
+2 rows in set (0.001 sec)
+
+
+
+
+
+
+
+
+
+
+
+// RETURN THE AVARSGE CASH BACK FROM EACH LOCATION
+
+MariaDB [salesdb]> SELECT location, AVG(price) FROM sales GROUP BY location;
++------------+------------+
+| location   | AVG(price) |
++------------+------------+
+| 1st Street |       4.25 |
+| Downtown   |       2.75 |
+| HQ         |       2.25 |
++------------+------------+
+3 rows in set (0.001 sec)
+
+
+
+
+
+
+
+
+
+
+// RETURN NUMBER OF SALES EACH PRODUCT BY PRODUCT & LOCATION
+
+MariaDB [salesdb]> SELECT product, location, COUNT(product) AS NOS FROM sales GROUP BY product, location;
++---------+------------+-----+
+| product | location   | NOS |
++---------+------------+-----+
+| Bagel   | 1st Street |   1 |
+| Bagel   | Downtown   |   1 |
+| Bagel   | HQ         |   2 |
+| Coffee  | 1st Street |   1 |
+| Coffee  | Downtown   |   1 |
+| Coffee  | HQ         |   2 |
++---------+------------+-----+
+6 rows in set (0.001 sec)
+
+
+
+
+
+
+
+
+
+
+
+
+// RETURN VALUES ON 'HQ' & 'DOWNTOWN'
+
+MariaDB [salesdb]> SELECT * FROM sales WHERE location IN ('HQ', 'Downtown');
++----------+---------+-------+---------------------+
+| Location | Product | Price | Sold_at             |
++----------+---------+-------+---------------------+
+| HQ       | Coffee  |     2 | 2025-04-09 11:03:26 |
+| HQ       | Coffee  |   2.5 | 2025-04-09 10:03:26 |
+| Downtown | Bagel   |   3.5 | 2025-04-09 09:03:26 |
+| Downtown | Coffee  |     2 | 2025-04-08 11:03:26 |
+| HQ       | Bagel   |   1.5 | 2025-04-07 11:03:26 |
+| HQ       | Bagel   |     3 | 2025-04-06 10:03:26 |
++----------+---------+-------+---------------------+
+6 rows in set (0.001 sec)
+
+
+
+
+
+
+
+
+
+
+
+// RETURN VALUES IS ON NOT 'HQ' & '1ST STREET'
+
+MariaDB [salesdb]> SELECT * FROM sales WHERE location NOT IN ('HQ', '1st street');
++----------+---------+-------+---------------------+
+| Location | Product | Price | Sold_at             |
++----------+---------+-------+---------------------+
+| Downtown | Bagel   |   3.5 | 2025-04-09 09:03:26 |
+| Downtown | Coffee  |     2 | 2025-04-08 11:03:26 |
++----------+---------+-------+---------------------+
+2 rows in set (0.000 sec)

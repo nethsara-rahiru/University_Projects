@@ -1,0 +1,58 @@
+create table Students(
+customer_ID INT,
+Name VARCHAR(50),
+Email VARCHAR(50),
+Phone VARCHAR(15),
+Registered_Date DATE,
+Cancelled_Date DATE
+);
+
+create table CustomerCopy(
+customer_ID INT,
+Email VARCHAR(50),
+Phone VARCHAR(15)
+);
+
+///COPY A TABLE////////////////////////////////////////////////////////////
+
+Create table CustomerCopy1 AS
+SELECT customer_ID,Email,Phone
+From Customer;
+
+
+///ADD A KEY///////////////////////////////////////////////////////////////
+
+Create table Customer1(
+Customer_ID INT AUTO_INCREMENT,
+Name VARCHAR(50),
+Email VARCHAR(50),
+Phone VARCHAR(15),
+Registered_Date DATE,
+Cancelled_Date DATE
+);
+
+///Delete Data////////////////////////////////////////////////////////////
+
+TRUNCATE TEABLE customer;
+
+DELETE FROM Customer;
+
+
+
+///ADD, EDIT AND DELETE COLUMS/////////////////////////////////////////////////
+
+ALTER TABLE customer ADD Nick_name VARCHAR(20);
+
+ALTER TABLE customer DROP Nick_name;
+
+ALTER TABLE customer MODIFY Nick_name VARCHAR(30);
+
+
+
+///ENTER DATA//////////////////////////////////////////////////////
+
+INSERT INTO customer (customer_ID, Name, Email, Phone, Registered_Date, Cancelled_Date) VALUES (101, 'Alice Smith','alice@gmail.com', '1234567890', '2024-03-18', '2026-03-09');
+
+///VIEW TABLE/////////////////////////////////////////////////////
+
+SELECT * FROM customer
